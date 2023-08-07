@@ -14,7 +14,7 @@ import 'package:quize/ui/shared/utils.dart';
 import 'package:quize/ui/views/splash_screen/splash_screen_controller.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+//main
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
