@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             navigatorObservers: [BotToastNavigatorObserver()], //2
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            home: SplashScreenView()));
+            home: ));
   }
 }
 
