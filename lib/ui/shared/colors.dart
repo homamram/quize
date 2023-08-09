@@ -8,5 +8,13 @@ class AppColors {
   static Color mainBlueColor = Color.fromRGBO(54, 127, 192, 1);
   static Color mainRedColor = Color.fromRGBO(221, 75, 57, 1);
   static Color mainGreyColor = Color.fromRGBO(242, 242, 242, 1);
-  static Color mainTextColor = Color.fromRGBO(124, 125, 126, 1);
+  static Color mainTextColor = Color(0xFF8C5594);
+  static Color textfieldcolor = Color.fromRGBO(244, 252, 252, 1);
+  static Color textFormfieldcolor = Color(0xFFF4FCFC);
+  static Color buttoncolor = Color(0xFF692E70);
+  static Color hintcolor = Color(0xFFD9CEDC);
+  static Color blackgrey = Color(0xFFBCBCBC);
+
+
+
 }

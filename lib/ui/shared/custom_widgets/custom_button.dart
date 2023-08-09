@@ -1,8 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quize/ui/shared/colors.dart';
+import 'package:get/get.dart';
 import 'package:quize/ui/shared/utils.dart';
-
 class CustomButton extends StatelessWidget {
   final String text;
   final Color? textColor;
@@ -10,8 +11,8 @@ class CustomButton extends StatelessWidget {
   final FontWeight? textFontWeight;
   final Color? borderColor;
   final Color? backgroundColor;
-  final Function? onPressed;
-  final String? imageName;
+  final Function onPressed;
+  final String? svgName;
 
   const CustomButton({
     Key? key,
@@ -21,31 +22,31 @@ class CustomButton extends StatelessWidget {
     this.textFontWeight,
     this.borderColor,
     this.backgroundColor,
-    this.onPressed,
-    this.imageName,
+    required this.onPressed,
+    this.svgName,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+
     return ElevatedButton(
       onPressed: () {
-        if (onPressed != null) onPressed!();
+        onPressed();
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (imageName != null) ...[
-            SvgPicture.asset('assets/images/$imageName.svg'),
+          if (svgName != null) ...[
+            SvgPicture.asset('images/$svgName.svg'),
             SizedBox(
-              width: size.width * 0.02,
+              width: screenWidth(50) ,
             )
           ],
           Text(
             text,
             style: TextStyle(
-                color: textColor ?? AppColors.mainWhiteColor,
-                fontSize: textSize ?? size.width * 0.035,
+                color: textColor ?? Colors.white,
+                fontSize: textSize ??  screenWidth(25),
                 fontWeight: textFontWeight ?? FontWeight.normal),
           ),
         ],
@@ -53,11 +54,11 @@ class CustomButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           side: borderColor != null
               ? BorderSide(
-                  width: 1, color: borderColor ?? AppColors.mainOrangeColor)
+              width: 1, color: borderColor ?? AppColors.buttoncolor)
               : null,
-          backgroundColor: backgroundColor ?? AppColors.mainOrangeColor,
-          shape: StadiumBorder(),
-          fixedSize: Size(screenWidth(4), size.width * 0.14)),
+          backgroundColor: backgroundColor ?? AppColors.buttoncolor,
+          // shape: StadiumBorder(),
+          fixedSize: Size( screenWidth(1),  screenWidth(7))),
     );
   }
 }

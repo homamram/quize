@@ -6,6 +6,7 @@ import 'package:quize/core/enums/connectivity_status.dart';
 import 'package:quize/core/services/connectivity_service.dart';
 import 'package:quize/core/translation/app_translation.dart';
 import 'package:quize/ui/shared/utils.dart';
+import 'package:quize/ui/views/login_view/login_view.dart';
 import 'package:quize/ui/views/splash_screen/splash_screen_view.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
             navigatorObservers: [BotToastNavigatorObserver()], //2
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            home: SplashScreenView()));
+            home: LoginView()));
   }
 }
 
