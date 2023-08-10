@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../core/utils/general_utiles.dart';
-import '../ui/views/sign_up/signup_view.dart';
+import '../ui/views/signup_view./signup_view.dart';
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});

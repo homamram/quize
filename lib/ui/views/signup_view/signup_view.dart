@@ -7,7 +7,7 @@ import 'package:quize/ui/shared/custom_widgets/custom_text.dart';
 import 'package:quize/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:quize/ui/shared/utils.dart';
 import 'package:get/get.dart';
-import 'package:quize/ui/views/sign_up/signup_controller.dart';
+import 'package:quize/ui/views/signup_view/signup_controller.dart';
 import '../login_view/login_view_controler.dart';
 
 class SignupView extends StatelessWidget {
@@ -69,7 +69,7 @@ class SignupView extends StatelessWidget {
                 ),
                 CustomText(text: 'اختر التخصص'),
                 Obx(
-                      () => Row(
+                  () => Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Radio(
@@ -109,7 +109,7 @@ class SignupView extends StatelessWidget {
                   ),
                 ),
                 Obx(
-                      () => Row(
+                  () => Row(
                     children: [
                       Radio(
                         value: AcademicSpecialization.IT,
@@ -155,7 +155,6 @@ class SignupView extends StatelessWidget {
                   text: "انشاء الحساب",
                   onPressed: () {
                     controller.validatesignup();
-
                   },
                 ),
                 SizedBox(height: screenHeight(80)),
