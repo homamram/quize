@@ -7,12 +7,11 @@ import 'package:quize/core/services/connectivity_service.dart';
 import 'package:quize/core/translation/app_translation.dart';
 import 'package:quize/ui/shared/utils.dart';
 import 'package:quize/ui/views/login_view/login_view.dart';
-import 'package:quize/ui/views/splash_screen/splash_screen_view.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../core/utils/general_utiles.dart';
-import '../ui/views/sing_up/singup_view.dart';
+import '../ui/views/sign_up/signup_view.dart';
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
             navigatorObservers: [BotToastNavigatorObserver()], //2
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            home: SingupView()));
+            home: SignupView()));
   }
 }
 

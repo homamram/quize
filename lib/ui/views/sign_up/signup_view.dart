@@ -7,11 +7,11 @@ import 'package:quize/ui/shared/custom_widgets/custom_text.dart';
 import 'package:quize/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:quize/ui/shared/utils.dart';
 import 'package:get/get.dart';
-import 'package:quize/ui/views/sing_up/singup_controller.dart';
+import 'package:quize/ui/views/sign_up/signup_controller.dart';
 import '../login_view/login_view_controler.dart';
 
-class SingupView extends StatelessWidget {
-  final SingupViewController controller = Get.put(SingupViewController());
+class SignupView extends StatelessWidget {
+  final SignupViewController controller = Get.put(SignupViewController());
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:quize/core/services/base_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../core/enums/academic_specialization.dart';
-class SingupViewController extends BaseController {
+class SignupViewController extends BaseController {
   TextEditingController nameController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   GlobalKey<FormState> singupkey = GlobalKey<FormState>();
