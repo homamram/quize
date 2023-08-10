@@ -8,6 +8,7 @@ import 'package:quize/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:quize/ui/shared/utils.dart';
 import 'package:get/get.dart';
 import 'package:quize/ui/views/signup_view/signup_controller.dart';
+import '../../../core/utils/string_utiles.dart';
 import '../login_view/login_view_controler.dart';
 
 class SignupView extends StatelessWidget {
@@ -20,9 +21,10 @@ class SignupView extends StatelessWidget {
         body: Form(
           key: controller.singupkey,
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: screenHeight(30),
-              horizontal: screenHeight(30),
+            padding: EdgeInsets.only(
+              top:screenHeight(30) ,
+             left:screenHeight(30),
+              right: screenHeight(30),
             ),
             child: ListView(
               children: [
@@ -59,12 +61,16 @@ class SignupView extends StatelessWidget {
                 ),
                 CustomText(text: 'رقم الموبايل'),
                 CustomTextField(
+                  type: TextInputType.number,
                   hitText: 'رقم الموبايل',
                   controller: controller.numberController,
                   icon: Icons.phone_enabled,
                   img: "ic_profile",
                   validator: (value) {
                     if (value!.isEmpty) return 'الرجاء ادخالرقم الموبايل';
+                    if(!isSyriaNumber(value)){
+                      return'ادخل رقم سوري من فضلك';
+                    }
                   },
                 ),
                 CustomText(text: 'اختر التخصص'),

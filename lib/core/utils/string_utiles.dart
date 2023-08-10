@@ -10,3 +10,7 @@ bool isPasswordValid(String value) {
 
   return regExp.hasMatch(value);
 }
+ bool   isSyriaNumber(String mobileNumber) {
+  RegExp regex = RegExp(r'^(!?(\+|00)?(963)|0)?9\d{8}$');
+  return regex.hasMatch(mobileNumber);
+}

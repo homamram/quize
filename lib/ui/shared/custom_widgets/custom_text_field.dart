@@ -8,12 +8,13 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? img;
   final IconData icon;
+  final TextInputType? type;
 
   const CustomTextField({
     Key? key,
     required this.hitText,
     required this.controller,
-    this.validator, this.img, required this.icon
+    this.validator, this.img, required this.icon, this.type
   }) : super(key: key);
 
   @override
@@ -24,6 +25,7 @@ class CustomTextField extends StatelessWidget {
          top: screenWidth(40),
           bottom:  screenWidth(100/7)),
       child: TextFormField(
+        keyboardType:type??TextInputType.text,
         validator: validator,
         controller: controller,
         decoration: InputDecoration(
