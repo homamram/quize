@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:quize/ui/shared/colors.dart';
 import 'package:quize/ui/shared/utils.dart';
-
+import 'package:flutter_svg/svg.dart';
 class CustomTextField extends StatelessWidget {
   final String hitText;
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  final IconData? icon;
+  final String? img;
+  final IconData icon;
 
   const CustomTextField({
     Key? key,
     required this.hitText,
     required this.controller,
-    this.validator, this.icon,
+    this.validator, this.img, required this.icon
   }) : super(key: key);
 
   @override
@@ -32,7 +33,7 @@ class CustomTextField extends StatelessWidget {
             hintStyle: TextStyle(
               color: AppColors.hintcolor
             ),
-            prefixIcon: Icon(icon??null),
+            prefixIcon:Icon(icon),
             prefixIconColor:AppColors.hintcolor ,
             filled: true,
             fillColor: AppColors.textFormfieldcolor,

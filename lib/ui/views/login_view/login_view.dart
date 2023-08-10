@@ -35,13 +35,14 @@ body: Form(
       ),
       CustomText(text: 'اسم المستخدم',),
       CustomTextField(hitText: 'اسم المستخدم', controller:_loginController.usernameController ,
-          icon: Icons.person,validator: (value){
+         img: "ic_profile",validator: (value){
         if(value!.isEmpty)
           return 'الرجاء ادخال اسمك';
-          }),
+          }
+          ,
+          icon: Icons.person),
       CustomText(text: 'رمز الدخول',),
-      CustomTextField(hitText: 'رمز الدخول', controller:_loginController.codeController ,
-          icon: Icons.person,
+      CustomTextField(hitText: 'رمز الدخول', controller:_loginController.codeController ,icon: Icons.person,
           validator: (value){
             if(value!.isEmpty)
               return 'الرجاء ادخال رمز الدخول';
