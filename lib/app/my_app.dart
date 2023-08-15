@@ -11,7 +11,9 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../core/utils/general_utiles.dart';
+import '../ui/views/main_views/main_view/main_view.dart';
 import '../ui/views/signup_view./signup_view.dart';
+import '../ui/views/main_views/home_view/select_specilazion/select_specilazion.dart';
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
             navigatorObservers: [BotToastNavigatorObserver()], //2
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            home: SignupView()));
+            home: MainView()));
   }
 }
 

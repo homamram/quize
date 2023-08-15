@@ -64,7 +64,7 @@ class SignupView extends StatelessWidget {
                   type: TextInputType.number,
                   hitText: 'رقم الموبايل',
                   controller: controller.numberController,
-                  icon: Icons.phone_enabled,
+                  icon: Icons.phone_outlined,
                   img: "ic_profile",
                   validator: (value) {
                     if (value!.isEmpty) return 'الرجاء ادخالرقم الموبايل';
