@@ -42,13 +42,14 @@ body: Form(
           ,
           icon: Icons.person),
       CustomText(text: 'رمز الدخول',),
-      CustomTextField(hitText: 'رمز الدخول', controller:_loginController.codeController ,icon: Icons.person,
+      CustomTextField(hitText: 'رمز الدخول', controller:_loginController.codeController ,icon: Icons.password_sharp,
+          type: TextInputType.number,
           validator: (value){
             if(value!.isEmpty)
               return 'الرجاء ادخال رمز الدخول';
           }),
       CustomButton(text: "تسجيل الدخول", onPressed: (){
-        _loginController.validateLogin();
+        _loginController.login();
       }),
       Padding(
         padding:  EdgeInsets.only(top: screenHeight(50),bottom: screenHeight(10)),

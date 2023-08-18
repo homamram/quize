@@ -4,6 +4,7 @@ import 'package:quize/core/enums/message_type.dart';
 import 'package:quize/core/enums/operation_type.dart';
 import 'package:quize/core/enums/request_status.dart';
 import 'package:quize/core/services/cart_service.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:quize/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:quize/ui/shared/utils.dart';
 import 'package:get/get.dart';

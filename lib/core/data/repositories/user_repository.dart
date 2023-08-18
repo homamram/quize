@@ -9,16 +9,16 @@ import 'package:quize/core/utils/network_util.dart';
 
 class UserRepository {
   Future<Either<String, TokenInfo>> login({
-    required String email,
-    required String password,
+    required String user_name,
+    required String passcode,
   }) async {
     try {
       return NetworkUtil.sendRequest(
         type: RequestType.POST,
         url: UserEndpoints.login,
         body: {
-          'userName': email,
-          'password': password,
+          'user_name': user_name,
+          'passcode': passcode,
         },
         headers: NetworkConfig.getHeaders(
             needAuth: false, extraHeaders: {"Language": "ar"}),

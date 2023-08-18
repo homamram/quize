@@ -37,8 +37,8 @@ class CustomToast {
         duration: Duration(seconds: 5),
         toastBuilder: (value) {
           return Container(
-            width: screenWidth(5),
-            height: screenWidth(5),
+            width: screenWidth(2),
+            height: screenWidth(2),
             decoration: BoxDecoration(
                 color: AppColors.mainWhiteColor,
                 borderRadius: BorderRadius.circular(20),
@@ -54,8 +54,8 @@ class CustomToast {
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               SvgPicture.asset(
                 'assets/images/$imageName.svg',
-                width: screenWidth(5),
-                height: screenWidth(5),
+                width: screenWidth(10),
+                height: screenWidth(10),
               ),
               SizedBox(
                 height: screenWidth(5),
@@ -63,7 +63,7 @@ class CustomToast {
               Text(
                 message,
                 style: TextStyle(
-                  fontSize: screenWidth(5),
+                  fontSize: screenWidth(40),
                 ),
               )
             ]),
