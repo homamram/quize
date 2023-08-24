@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quize/ui/shared/utils.dart';
-
+import 'package:get/get.dart';
+import '../home_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 class SelectSpecilazion extends StatefulWidget {
   @override
   _SelectSpecilazionState createState() => _SelectSpecilazionState();
@@ -52,6 +55,7 @@ class _SelectSpecilazionState extends State<SelectSpecilazion> {
       medicalTextColor = isMedicalLineVisible ? Colors.blue : Colors.black;
     });
   }
+  HomePageController controller = Get.put(HomePageController());
 
   @override
   Widget build(BuildContext context) {
@@ -136,79 +140,97 @@ class _SelectSpecilazionState extends State<SelectSpecilazion> {
         Visibility(
           visible: isAllLineVisible,
           child: Column(
-            children: [
-              Row(
-                children: [
-                  Specliztion_widghet(
-                    imgname: "ic_dentist",
-                    name: 'طب الاسنان',
-                  ),
-                  Specliztion_widghet(
-                    imgname: "ic_doctor",
-                    name: 'طب البشري',
-                  ),
-                  Specliztion_widghet(
-                    imgname: "ic_pharmacy",
-                    name: 'طب البشري',
-                  ),
-                  Specliztion_widghet(
-                    imgname: "ic_nursing",
-                    name: 'طب البشري',
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Specliztion_widghet(
-                    imgname: "ic_It",
-                    name: 'الهندسة المعلوماتية',
-                  ),
-                  Specliztion_widghet(
-                    imgname: "ic_architecture",
-                    name: 'الهندسة المعمارية',
-                  ),
-                ],
-              ),
-            ],
+            // children: [
+            //   Row(
+            //     children: [
+            //       Specliztion_widghet(
+            //         imgname: "ic_dentist",
+            //         name: 'طب الاسنان',
+            //       ),
+            //       Specliztion_widghet(
+            //         imgname: "ic_doctor",
+            //         name: 'طب البشري',
+            //       ),
+            //       Specliztion_widghet(
+            //         imgname: "ic_pharmacy",
+            //         name: 'طب البشري',
+            //       ),
+            //       Specliztion_widghet(
+            //         imgname: "ic_nursing",
+            //         name: 'طب البشري',
+            //       ),
+            //     ],
+            //   ),
+            //   Row(
+            //     children: [
+            //       Specliztion_widghet(
+            //         imgname: "ic_It",
+            //         name: 'الهندسة المعلوماتية',
+            //       ),
+            //       Specliztion_widghet(
+            //         imgname: "ic_architecture",
+            //         name: 'الهندسة المعمارية',
+            //       ),
+            //     ],
+            //   ),
+            // ],
           ),
         ),
-        Visibility(
-          visible: isEngineeringLineVisible,
-          child: Row(
+        Row(
 
-            children: [
-              Specliztion_widghet(
-                imgname: "ic_It",
-                name: 'الهندسة المعلوماتية',
-              ),
-              Specliztion_widghet(
-                imgname: "ic_architecture",
-                name: 'الهندسة المعمارية',
-              ),
-            ],
-          ),
+          children: [
+            Obx((){
+              return controller.ISEngineerCollagesLoading
+                  ? SpinKitCircle(
+                color: Colors.red,
+              )
+                  :controller.EngineerCollageslist.isEmpty
+                  ? Text('No Category') : SizedBox(
+                height: screenWidth(3.2),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: controller.EngineerCollageslist.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      children: [
+                        Specliztion_widghet(
+                          imgname: 'https://insanelygoodrecipes.com/wp-content/uploads/2020/02/Burger-and-Fries.webp',
+                          name:controller.EngineerCollageslist[index].collageName ?? '' ,
+                        ),
+
+
+                      ],
+                    );
+                  },
+                ),
+              );
+            }),
+
+
+          ],
         ),
         Visibility(
           visible: isMedicalLineVisible,
           child: Row(
-            children: [
-              Specliztion_widghet(
-                imgname: "ic_dentist",
-                name: 'طب الاسنان',
-              ),
-              Specliztion_widghet(
-                imgname: "ic_doctor",
-                name: 'طب البشري',
-              ),
-              Specliztion_widghet(
-                imgname: "ic_pharmacy",
-                name: 'طب البشري',
-              ),
-              Specliztion_widghet(
-                imgname: "ic_nursing",
-                name: 'طب البشري',
-              ),
-            ],
+            // children: [
+            //   Specliztion_widghet(
+            //     imgname: "ic_dentist",
+            //     name: 'طب الاسنان',
+            //   ),
+            //   Specliztion_widghet(
+            //     imgname: "ic_doctor",
+            //     name: 'طب البشري',
+            //   ),
+            //   Specliztion_widghet(
+            //     imgname: "ic_pharmacy",
+            //     name: 'طب البشري',
+            //   ),
+            //   Specliztion_widghet(
+            //     imgname: "ic_nursing",
+            //     name: 'طب البشري',
+            //   ),
+            // ],
           ),
         ),
       ],
@@ -229,8 +251,8 @@ class Specliztion_widghet extends StatelessWidget {
       padding: EdgeInsets.only(left: screenWidth(17)),
       child: Column(
         children: [
-          SvgPicture.asset(
-            "assets/images/ic_It.svg",
+          CachedNetworkImage(
+            imageUrl: imgname,
             width: screenWidth(6),
             height: screenWidth(6),
           ),

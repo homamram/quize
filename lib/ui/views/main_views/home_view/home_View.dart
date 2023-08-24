@@ -8,13 +8,14 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quize/ui/shared/custom_widgets/custom_text.dart';
 import 'package:quize/ui/views/main_views/home_view/select_specilazion/select_specilazion.dart';
-
+import 'package:get/get.dart';
 import '../../../../core/translation/app_translation.dart';
 import '../../../shared/colors.dart';
 import '../../../shared/custom_widgets/custom_text_field.dart';
 import '../../../shared/utils.dart';
 import '../../login_view/login_view.dart';
 import 'AutoScrollPage_View/AutoScrollPageView.dart';
+import 'home_controller.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -23,6 +24,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 TextEditingController c=TextEditingController();
+HomePageController controller = Get.put(HomePageController());
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {

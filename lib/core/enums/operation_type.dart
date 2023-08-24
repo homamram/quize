@@ -1,5 +1,5 @@
 enum OperationType {
   NONE,
-  CATEGORY,
+  ENGINEER,
   MEAL,
 }

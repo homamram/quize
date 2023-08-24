@@ -6,7 +6,6 @@ import 'package:quize/app/my_app_controller.dart';
 import 'package:quize/core/data/repositories/shared_prefreance_repository.dart';
 import 'package:quize/core/enums/connectivity_status.dart';
 import 'package:quize/core/enums/message_type.dart';
-import 'package:quize/core/services/cart_service.dart';
 import 'package:quize/core/services/connectivity_service.dart';
 import 'package:quize/core/services/location_service.dart';
 import 'package:quize/core/services/notification_service.dart';

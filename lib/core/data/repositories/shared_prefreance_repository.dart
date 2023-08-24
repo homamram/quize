@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:quize/core/data/models/apis/token_info.dart';
-import 'package:quize/core/data/models/cart_model.dart';
 import 'package:quize/core/enums/data_type.dart';
 import 'package:quize/main.dart';
 import 'package:get/get.dart';
