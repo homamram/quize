@@ -19,9 +19,9 @@ SharedPrefranceRepository get storage => Get.find<SharedPrefranceRepository>();
 ConnectivityService get connectivityService => Get.find<ConnectivityService>();
 LocationService get locationService => Get.find<LocationService>();
 NotificationService get notificationService => Get.find<NotificationService>();
-
+MyAppController get myAppController => Get.find<MyAppController>();
 bool get isOnline =>
-    Get.find<MyAppController>().connectionStatus == ConnectivityStatus.ONLINE;
+    myAppController.connectionStatus == ConnectivityStatus.ONLINE;
 
 void fadeInTransition(Widget view) {
   Get.to(view, transition: Transition.fadeIn);

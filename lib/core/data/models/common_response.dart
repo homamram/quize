@@ -6,7 +6,7 @@ class CommonResponse<T> {
   CommonResponse.fromJson(Map<String, dynamic> json) {
     try {
       this.statusCode = json['statusCode'];
-      if (statusCode == 200) {
+      if (statusCode.toString().startsWith('2')) {
         this.data = json['response'];
       } else {
         if (json['response'] != null &&
@@ -32,5 +32,5 @@ class CommonResponse<T> {
     }
   }
 
-  bool get getStatus => statusCode == 200;
+  bool get getStatus => statusCode.toString().startsWith('2');
 }

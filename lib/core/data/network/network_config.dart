@@ -3,7 +3,7 @@ import 'package:quize/core/enums/request_type.dart';
 import '../../utils/general_utiles.dart';
 
 class NetworkConfig {
-  static String BASE_API = 'api/auth/';
+  static String BASE_API = 'api/';
 
   static String getFullApiUrl(String api) {
     return BASE_API + api;

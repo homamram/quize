@@ -5,8 +5,13 @@ import 'package:quize/ui/shared/colors.dart';
 import 'package:quize/ui/shared/custom_widgets/custom_button.dart';
 import 'package:quize/ui/shared/utils.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quize/ui/views/main_views/main_view/main_view.dart';
+import 'package:quize/ui/views/signup_view./signup_view.dart';
+import '../../../core/enums/message_type.dart';
+import '../../../core/utils/general_utiles.dart';
 import '../../shared/custom_widgets/custom_text.dart';
 import '../../shared/custom_widgets/custom_text_field.dart';
+import '../../shared/custom_widgets/custom_toast.dart';
 import 'login_view_controler.dart';
 import 'package:get/get.dart';
 class LoginView extends StatefulWidget {
@@ -49,7 +54,16 @@ body: Form(
               return 'الرجاء ادخال رمز الدخول';
           }),
       CustomButton(text: "تسجيل الدخول", onPressed: (){
-        _loginController.login();
+        // _loginController.login();
+        if(isOnline)
+        {
+          Get.to( MainView());
+        }
+        else{
+          CustomToast.showMeassge(
+              message: 'Please check internet connection',
+              messageType: MessageType.WARNING);
+        }
       }),
       Padding(
         padding:  EdgeInsets.only(top: screenHeight(50),bottom: screenHeight(10)),
@@ -57,7 +71,10 @@ body: Form(
 
           children: [
           CustomText(text: "ليس لديك حساب ؟",color: AppColors.mainBlackColor,),
-          CustomText(text: "انشاء حسابك الان",),
+          InkWell(onTap: (){
+            Get.to(SignupView());
+          },
+              child: CustomText(text: "انشاء حسابك الان",)),
         ],),
 
       ),

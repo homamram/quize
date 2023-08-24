@@ -38,29 +38,37 @@ class UserRepository {
   }
 
   Future<Either<String, bool>> register({
-    required String firstname,
-    required String lastname,
-    required String photoPath,
+    required String user_name,
+    required String phone,
+    required String collage_uuid,
   }) async {
     try {
       return NetworkUtil.sendMultipartRequest(
         type: RequestType.POST,
         url: UserEndpoints.register,
         fields: {
-          'FirstName': firstname,
-          'LastName': lastname,
+          'user_name': user_name,
+          'phone': phone,
+          'collage_uuid':collage_uuid
         },
-        files: {"Images": photoPath},
-        headers: NetworkConfig.getHeaders(needAuth: false),
+        headers: NetworkConfig.getHeaders(needAuth: false,extraHeaders: {'Content-Type':'multipart/form-data'}),
       ).then((response) {
-        CommonResponse<Map<String, dynamic>> commonResponse =
-            CommonResponse.fromJson(response);
+        if(response!=null){
+          CommonResponse<Map<String, dynamic>> commonResponse =
+          CommonResponse.fromJson(response);
 
-        if (commonResponse.getStatus) {
-          return Right(commonResponse.getStatus);
-        } else {
-          return Left(commonResponse.message ?? '');
+          if (commonResponse.getStatus) {
+            return Right(commonResponse.getStatus );
+          } else {
+            return Left(commonResponse.data!['message'] ?? '');
+          }
         }
+        else{
+          if (false==true) return Right(true);
+         else return Left('bad request');
+
+        }
+
       });
     } catch (e) {
       return Left(e.toString());

@@ -29,7 +29,7 @@ class ConnectivityService {
       case ConnectivityResult.vpn:
         return ConnectivityStatus.ONLINE;
       case ConnectivityResult.other:
-        return ConnectivityStatus.ONLINE;
+        return ConnectivityStatus.OFFLINE;
     }
   }
 }

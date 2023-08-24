@@ -31,7 +31,9 @@ class SignupView extends StatelessWidget {
                 Row(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+
+                      },
                       child: SvgPicture.asset("assets/images/ic_back.svg"),
                     ),
                     SizedBox(width: screenWidth(4)),
@@ -160,7 +162,7 @@ class SignupView extends StatelessWidget {
                 CustomButton(
                   text: "انشاء الحساب",
                   onPressed: () {
-                    controller.validatesignup();
+                    controller.register();
                   },
                 ),
                 SizedBox(height: screenHeight(80)),
