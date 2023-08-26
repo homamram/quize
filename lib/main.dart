@@ -3,11 +3,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:quize/app/my_app.dart';
 import 'package:quize/app/my_app_controller.dart';
-import 'package:quize/core/data/models/notification_model.dart';
 import 'package:quize/core/data/repositories/shared_prefreance_repository.dart';
 import 'package:quize/core/services/connectivity_service.dart';
 import 'package:quize/core/services/location_service.dart';
-import 'package:quize/core/services/notification_service.dart';
 import 'package:quize/firebase_options.dart';
 import 'package:quize/ui/shared/utils.dart';
 import 'package:get/get.dart';
@@ -33,7 +31,6 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  Get.put(NotificationService());
 
   runApp(MyApp());
 }

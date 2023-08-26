@@ -71,11 +71,11 @@ class _HomeViewState extends State<HomeView> {
                 CustomTextField(hitText: "بحث", controller: c, icon: Icons.search,
                 textformcolor: AppColors.mainGreyColor,
                 suffexicon:Icons.inventory_2_sharp ),
-                Container(
-                  width: screenWidth(3),
-                  height: screenWidth(3),
-                  child:AutoScrollPageView() ,
-                ),
+                // Container(
+                //   width: screenWidth(3),
+                //   height: screenWidth(3),
+                //   child:AutoScrollPageView() ,
+                // ),
                 SizedBox(height: screenHeight(40),),
                 Row(children: [
                   Container(

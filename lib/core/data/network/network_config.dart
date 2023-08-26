@@ -17,7 +17,7 @@ class NetworkConfig {
       'Accept-Language':storage.getAppLanguage(),
       if (needAuth!)
         'Authorization':
-            'Bearer ${storage.getTokenInfo()?.accessToken ?? ''}',
+            'Bearer ${storage.getTokenInfo()?.accessToken ?? '4|2nqxFl2zVSZ9SJ6wVFQnv6IY87R7JhzFkoe86IvN'}',
       if (type != RequestType.GET) 'Content-Type': 'application/json',
       ...extraHeaders ?? {}
     };

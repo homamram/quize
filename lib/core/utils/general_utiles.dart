@@ -8,7 +8,6 @@ import 'package:quize/core/enums/connectivity_status.dart';
 import 'package:quize/core/enums/message_type.dart';
 import 'package:quize/core/services/connectivity_service.dart';
 import 'package:quize/core/services/location_service.dart';
-import 'package:quize/core/services/notification_service.dart';
 import 'package:quize/ui/shared/colors.dart';
 import 'package:quize/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:get/get.dart';
@@ -17,7 +16,6 @@ SharedPrefranceRepository get storage => Get.find<SharedPrefranceRepository>();
 //CartService get cartService => Get.find<CartService>();
 ConnectivityService get connectivityService => Get.find<ConnectivityService>();
 LocationService get locationService => Get.find<LocationService>();
-NotificationService get notificationService => Get.find<NotificationService>();
 MyAppController get myAppController => Get.find<MyAppController>();
 bool get isOnline =>
     myAppController.connectionStatus == ConnectivityStatus.ONLINE;

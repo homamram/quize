@@ -1,14 +1,16 @@
-class EngineerCollagesModel {
+class CollagesModel {
   String? id;
   String? collageName;
   String? image;
+  String? category;
 
-  EngineerCollagesModel({this.id, this.collageName, this.image});
+  CollagesModel({this.id, this.collageName, this.image, this.category});
 
-  EngineerCollagesModel.fromJson(Map<String, dynamic> json) {
+  CollagesModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     collageName = json['collage_name'];
     image = json['image'];
+    category = json['category'];
   }
 
   Map<String, dynamic> toJson() {
@@ -16,6 +18,6 @@ class EngineerCollagesModel {
     data['id'] = this.id;
     data['collage_name'] = this.collageName;
     data['image'] = this.image;
+    data['category'] = this.category;
     return data;
-  }
-}
+  }}
