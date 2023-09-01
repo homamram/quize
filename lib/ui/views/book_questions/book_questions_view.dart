@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -24,6 +25,8 @@ class BookQuestionsView extends StatefulWidget {
 
 class _BookQuestionsViewState extends State<BookQuestionsView> {
   final BookQuestionsController controller = Get.put(BookQuestionsController());
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -88,52 +91,54 @@ class _BookQuestionsViewState extends State<BookQuestionsView> {
                     ),
                   ),
                   SizedBox(height: screenWidth(25)),
-                  Text("${controller.questionNum} .نص السؤال"),
-                  Column(
-                    children: controller.textList.asMap().entries.map((entry) {
-                      int index = entry.key;
-                      String text = entry.value;
-                      return Container(
-                        height: screenWidth(6),
-                        margin: EdgeInsets.all(screenWidth(40)),
-                        padding: EdgeInsets.all(screenWidth(40)),
-                        decoration: BoxDecoration(
-                          color: controller.selectedIndex == index
-                              ? Colors.white
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: AppColors.buttoncolor,
-                            width: controller.selectedIndex == index ? 2 : 0,
-                          ),
-                        ),
-                        // transform: Matrix4.rotationZ(0.05),
-                        child: GestureDetector(
-                          onTap: () {
-                            // setState(() {
-                            //   selectedIndex = index;
-                            // });
-                            controller.updateSelectedIndex(index);
+                  Obx((){
+                    return controller.ISbookQuestionsLoading
+                        ? SpinKitCircle(
+                      color: Colors.red,
+                    )
+                        :controller. bookQuestions.isEmpty
+                        ? Text('No Category') : ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: 1,
+                          itemBuilder: (BuildContext context,index ) {
+                            print(index);
+                            return Column(
+                              children: [
+                                Text("${controller.bookQuestions[controller.index.value].content} .نص السؤال"),
+                                Column(
+                                  children: [Container(
+                                    margin: EdgeInsets.all(screenWidth(40)),
+                                    padding: EdgeInsets.all(screenWidth(40)),
+                                    // transform: Matrix4.rotationZ(0.05),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          index++;
+                                          print(index);
+
+                                        });
+
+                                      },
+                                      child: Column(
+                                          children:  List.generate(controller.options[0].length , (i) {
+                                            return  Container(child: Text(controller.options[controller.index.value][i]),
+
+
+                                            );
+                                          })
+                                      )
+
+                                    ),
+                                  )],
+
+                                )
+                                  ]
+                            );
                           },
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                radius: 20,
-                                backgroundColor:
-                                    controller.selectedIndex == index
-                                        ? AppColors.buttoncolor
-                                        : Colors.grey.shade300,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text("data")
-                            ],
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
+                        );
+                  }),
+
                   SizedBox(
                     height: screenWidth(150),
                   ),
@@ -178,6 +183,7 @@ class _BookQuestionsViewState extends State<BookQuestionsView> {
                         text: "السابق",
                         onPressed: () {
                           controller.decreaseProgress();
+
                         },
                         width: screenWidth(
                           4,
@@ -191,6 +197,8 @@ class _BookQuestionsViewState extends State<BookQuestionsView> {
                         text: "التالي",
                         onPressed: () {
                           controller.increaseProgress();
+                          if(controller.index.value<controller.bookQuestions.length-1)
+                        {  controller.incress();}
                         },
                         width: screenWidth(4),
                         backgroundColor: AppColors.mainWhiteColor,

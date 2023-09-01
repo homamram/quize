@@ -1,40 +1,42 @@
 import 'package:quize/core/services/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:quize/ui/views/login_view/login_view.dart';
-import 'package:quize/ui/views/main_views/home_view/home_View.dart';
 
+import '../../../core/data/models/apis/questions_model.dart';
 import '../../../core/data/models/book_Questions_model.dart';
 import '../../../core/data/repositories/book_Question _repository.dart';
+import '../../../core/data/repositories/question _repository.dart';
 import '../../../core/enums/message_type.dart';
 import '../../../core/enums/operation_type.dart';
 import '../../../core/enums/request_status.dart';
 import '../../shared/custom_widgets/custom_toast.dart';
-class BookQuestionsController extends BaseController {
-  RxList<bookQuestionsModel> bookQuestions = <bookQuestionsModel>[].obs;
+class QuestionsController extends BaseController {
+  RxList<QuestionsModel> Questions = <QuestionsModel>[].obs;
+  RxList<List> options =<List>[].obs;
+  RxInt index = 0.obs;
+
+
 
   RxDouble progress = 1.0.obs;
   RxInt questionNum = 1.obs;
-  RxInt index = 0.obs;
   RxInt selectedIndex = (-1).obs;
-  RxList textList = ["1",'2','3','4'].obs;
+  RxList textList = ["1",'2'].obs;
   RxBool selected = false.obs;
-  RxList<List> options =<List>[].obs;
 
-  bool get ISbookQuestionsLoading =>
+  bool get ISQuestionsLoading =>
       requestStatus.value == RequestStatus.LOADING &&
           operationType.contains(OperationType.NONE);
-@override
+  @override
   void onInit() {
-  getAllbookQuestions();
+    getAllQuestions();
     // TODO: implement onInit
     super.onInit();
   }
   void incress(){
-  if(index<bookQuestions.length)
-  {index++;}
+    if(index<Questions.length-1)
+    {index++;}
 
   }
-
   void increaseProgress() {
     if (progress.value < 100) {
       progress.value++;
@@ -45,24 +47,18 @@ class BookQuestionsController extends BaseController {
       // You can handle it in your UI
     }
   }
-  void updateSelectedIndex(int newIndex) {
-    selectedIndex.value = newIndex;
-  }
-  void getAllbookQuestions() {
+  void getAllQuestions() {
     runLoadingFutureFunction(
         type: OperationType.NONE,
-        function: bookQuestionRepository().getAll().then((value) {
+        function: QuestionRepository().getAll().then((value) {
           value.fold((l) {
             CustomToast.showMeassge(
                 message: l, messageType:MessageType.REJECTED);
           }, (r) {
-            bookQuestions.addAll(r);
+            Questions.addAll(r);
             getAllOptions();
           });
         }));
-  }
-  void pluse(){
-
   }
 
   void decreaseProgress() {
@@ -75,13 +71,14 @@ class BookQuestionsController extends BaseController {
       // You can handle it in your UI
     }
   }
-
-
   getAllOptions(){
 
-  for(var option in bookQuestions){
-    options.addAll([option.options!.toJson().values.toList()]);
-  }
+    for(var option in Questions){
+      options.addAll([option.options!.toJson().values.toList()]);
+    }
   }
 
+  void updateSelectedIndex(int index) {
+    selectedIndex.value = index;
+  }
 }

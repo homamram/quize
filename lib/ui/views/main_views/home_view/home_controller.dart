@@ -2,6 +2,8 @@
 import 'package:quize/core/enums/message_type.dart';
 
 import '../../../../core/data/models/Collages_model.dart';
+import '../../../../core/data/models/apis/all_Collages_model.dart';
+import '../../../../core/data/repositories/all_colleges_repository.dart';
 import '../../../../core/data/repositories/colleges_repository.dart';
 import '../../../../core/enums/operation_type.dart';
 import '../../../../core/enums/request_status.dart';
@@ -14,6 +16,8 @@ class HomePageController extends BaseController {
 
   RxList<CollagesModel> EngineerCollageslist = <CollagesModel>[].obs;
   RxList<CollagesModel> MedecalCollageslist = <CollagesModel>[].obs;
+  RxList<allcollegesModel> Collageslist = <allcollegesModel>[].obs;
+
 
   bool get ISEngineerCollagesLoading =>
       requestStatus.value == RequestStatus.LOADING &&
@@ -21,6 +25,9 @@ class HomePageController extends BaseController {
   bool get ISMedecalCollagesLoading =>
       requestStatus.value == RequestStatus.LOADING &&
           operationType.contains(OperationType.MEDECAL);
+  bool get ISCollagesLoading =>
+      requestStatus.value == RequestStatus.LOADING &&
+          operationType.contains(OperationType.NONE);
 
 
 
@@ -29,9 +36,23 @@ class HomePageController extends BaseController {
   void onInit() {
     getAllEngineer();
     getAllMedecal();
+    getAllcolleges();
 
     super.onInit();
   }
+  void getAllcolleges() {
+    runLoadingFutureFunction(
+        type: OperationType.NONE,
+        function: AllCollegesRepository().getAll().then((value) {
+          value.fold((l) {
+            CustomToast.showMeassge(
+                message: l, messageType:MessageType.REJECTED);
+          }, (r) {
+            Collageslist.addAll(r);
+          });
+        }));
+  }
+
 
 
   void getAllEngineer() {

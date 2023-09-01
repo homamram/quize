@@ -143,23 +143,23 @@ class _SelectSpecilazionState extends State<SelectSpecilazion> {
           child: Column(
            children: [
              Obx((){
-               return controller.ISMedecalCollagesLoading
+               return controller.ISCollagesLoading
                    ? SpinKitCircle(
                  color: Colors.red,
                )
-                   :controller. MedecalCollageslist.isEmpty
+                   :controller. Collageslist.isEmpty
                    ? Text('No Category') : SizedBox(
                  height: screenWidth(3.2),
                  child: ListView.builder(
                    scrollDirection: Axis.horizontal,
                    shrinkWrap: true,
-                   itemCount: controller.MedecalCollageslist.length,
+                   itemCount: controller.Collageslist.length,
                    itemBuilder: (BuildContext context, int index) {
                      return Row(
                        children: [
                          Specliztion_widghet(
-                           imgname: controller.MedecalCollageslist[index].image??'',
-                           name:controller.MedecalCollageslist[index].collageName ?? '' ,
+                           imgname: controller.Collageslist[index].image??'',
+                           name:controller.Collageslist[index].collageName ?? '' ,
                          ),
 
 
@@ -169,39 +169,7 @@ class _SelectSpecilazionState extends State<SelectSpecilazion> {
                  ),
                );
              }),
-             SizedBox(height: screenHeight(50),),
-             Obx((){
-               return controller.ISEngineerCollagesLoading
-                   ? SpinKitCircle(
-                 color: Colors.red,
-               )
-                   :controller.EngineerCollageslist.isEmpty
-                   ? Text('No Category') : SizedBox(
-                 height: screenWidth(3.2),
-                 child: ListView.builder(
-                   scrollDirection: Axis.horizontal,
-                   shrinkWrap: true,
-                   itemCount: controller.EngineerCollageslist.length,
-                   itemBuilder: (BuildContext context, int index) {
-                     return Row(
-                       children: [
-                         InkWell(
-                           onTap: (){
-                             Get.to(specializationsView(specializationsname:controller.EngineerCollageslist[index].collageName ?? '' ,));
-                           },
-                           child: Specliztion_widghet(
-                             imgname: controller.EngineerCollageslist[index].image??'',
-                             name:controller.EngineerCollageslist[index].collageName ?? '' ,
-                           ),
-                         ),
 
-
-                       ],
-                     );
-                   },
-                 ),
-               );
-             }),
            ],
           ),
         ),
